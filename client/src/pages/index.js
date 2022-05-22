@@ -4,10 +4,23 @@ import Hero from "../components/Hero";
 import { Link } from "gatsby";
 
 const IndexPage = () => {
-  return (
+  const [homePage, setHomePage] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    fetch("http://localhost:1337/api/home?populate=*")
+        .then(res => res.json())
+        .then(data => {
+          setHomePage(data);
+          setLoading(false);
+        })
+        .catch(err => console.error(err))
+  }, []);
+
+  if (!loading) {return (
       <CoreLayout>
-        <Hero title="Almost Home">
-          <p className="text-xl">Wyoming</p>
+        <Hero title={homePage.data.attributes.Hero.Header}>
+          {homePage.data.attributes.Hero.Subheader}
         </Hero>
         <div className="relative my-12 py-12">
           <div className="absolute inset-0 flex items-center" aria-hidden="true">
@@ -83,7 +96,7 @@ const IndexPage = () => {
           </div>
         </div>
       </CoreLayout>
-  )
+  )} else {return <div>Loading...</div>}
 }
 
 export default IndexPage
