@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_reusable_heroes",
+  "info": {
+    "displayName": "Hero",
+    "icon": "star-and-crescent"
+  },
+  "options": {},
+  "attributes": {
+    "Header": {
+      "type": "string"
+    },
+    "Subheader": {
+      "type": "string"
+    },
+    "Image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
