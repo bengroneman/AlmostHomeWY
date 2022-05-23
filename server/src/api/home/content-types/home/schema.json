@@ -4,7 +4,8 @@
   "info": {
     "singularName": "home",
     "pluralName": "homes",
-    "displayName": "Home"
+    "displayName": "Home",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,6 +16,17 @@
       "type": "component",
       "repeatable": false,
       "component": "reusable.hero"
+    },
+    "CTA": {
+      "displayName": "CTA",
+      "type": "component",
+      "repeatable": true,
+      "component": "reusable.cta"
+    },
+    "Donate": {
+      "type": "component",
+      "repeatable": false,
+      "component": "reusable.cta"
     }
   }
 }
