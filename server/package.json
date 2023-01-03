@@ -13,7 +13,7 @@
     "@strapi/plugin-graphql": "^4.1.11",
     "@strapi/plugin-i18n": "4.1.11",
     "@strapi/plugin-users-permissions": "4.1.11",
-    "@strapi/strapi": "4.1.11",
+    "@strapi/strapi": "4.5.5",
     "better-sqlite3": "7.4.6",
     "express": "^4.18.1",
     "stripe": "^9.2.0"
