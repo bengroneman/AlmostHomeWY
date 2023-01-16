@@ -1,0 +1,44 @@
+fragment HomePage on HomePage {
+  stage
+  publishedAt
+  updatedAt
+  createdAt
+  remoteId: id
+  title
+  hero {
+    ... on Hero {
+      stage
+      id
+      header
+      subHeader
+    }
+  }
+  publishedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  updatedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  createdBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  scheduledIn {
+    ... on ScheduledOperation {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+}

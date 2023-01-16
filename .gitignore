@@ -113,6 +113,7 @@ exports
 *.cache
 build
 .strapi-updater.json
+package-lock.json
 
 node_modules/
 .cache/
