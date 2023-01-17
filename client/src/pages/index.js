@@ -9,10 +9,30 @@ const IndexPage = () => {
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    fetch("http://localhost:1337/api/home?populate=*")
+      const options = {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({
+          query: `
+                query HomePageContent{
+                homePage(where: {id: "clcz72fibhkkd09ljs74vlkfk"}) {
+                  title
+                  stage
+                  hero {
+                    stage
+                    subHeader
+                    header
+                  }
+                }
+              }
+            `,
+        })
+      }
+    fetch("https://api-us-west-2.hygraph.com/v2/clcz5rk8l3uih01t840ju7w9o/master", options)
         .then(res => res.json())
         .then(data => {
-          setHomePage(data);
+          console.log(data)
+          setHomePage(data.data.homePage);
           setLoading(false);
         })
         .catch(err => console.error(err))
@@ -20,8 +40,8 @@ const IndexPage = () => {
 
   if (!loading) {return (
       <CoreLayout>
-        <Hero title={homePage.data.attributes.Hero.Header}>
-          {homePage.data.attributes.Hero.Subheader}
+        <Hero title={homePage.hero.header}>
+          {homePage.hero.subHeader}
         </Hero>
         <div className="relative my-12 py-12">
           <div className="absolute inset-0 flex items-center" aria-hidden="true">
@@ -37,9 +57,9 @@ const IndexPage = () => {
             <h2 className="sr-only">About. </h2>
             <dl className="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-8">
 
-              {homePage.data.attributes.CTA.map((item, index) => (
-                  <Cta key={index} header={item.Header} body={item.Body} />
-              ))}
+              {/*{homePage.data.attributes.CTA.map((item, index) => (*/}
+              {/*    <Cta key={index} header={item.Header} body={item.Body} />*/}
+              {/*))}*/}
             </dl>
           </div>
         </div>
@@ -55,8 +75,8 @@ const IndexPage = () => {
         <div className="bg-sky-100 py-12 my-12">
           <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-24 lg:px-8 lg:flex lg:items-center lg:justify-between">
             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl">
-              <span className="block">{homePage.data.attributes.Donate.Header}</span>
-              <span className="block text-sky-600">{homePage.data.attributes.Donate.Body}</span>
+              <span className="block">{homePage.title}</span>
+              <span className="block text-sky-600">{homePage.hero.subHeader}</span>
             </h2>
             <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
               <div className="inline-flex rounded-md shadow">
