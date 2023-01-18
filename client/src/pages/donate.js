@@ -3,24 +3,33 @@ import CoreLayout from "../components/layouts/CoreLayout"
 import Hero from "../components/Hero"
 import {Link} from "gatsby";
 import {ExternalLinkIcon} from "@heroicons/react/solid";
+import {getHyGraphContent} from "../utils/utils";
 
 const DonatePage = () => {
     const [donatePage, setDonatePage] = React.useState(null);
     const [loading, setLoading] = React.useState(true);
 
     React.useEffect(() => {
-        fetch("http://localhost:1337/api/donate?populate=*")
-            .then(res => res.json())
-            .then(data => {
-                setDonatePage(data);
-                setLoading(false);
-            })
-            .catch(err => console.error(err))
+      const query = `
+        query DonatePage {
+          donatePage(where: {id: "cld1103to7jt10cn1i53ktwc2"}) {
+            id
+            hero {
+              subHeader
+              header
+            }
+          }
+        }
+      `;
+      getHyGraphContent(query).then((content) => {
+          setDonatePage(content.data.donatePage);
+          setLoading(false);
+      });
     }, []);
 
     if (!loading) {return (
     <CoreLayout>
-        <Hero title={donatePage.data.attributes.Hero.Header}></Hero>
+        <Hero title={donatePage.hero.header}></Hero>
         <div className="bg-white shadow overflow-hidden sm:rounded-lg">
             <div className="px-4 py-5 sm:px-6">
                 <h3 className="text-lg leading-6 font-medium text-gray-900">Ways to donate</h3>

@@ -3,48 +3,49 @@ import CoreLayout from "../components/layouts/CoreLayout";
 import Hero from "../components/Hero";
 import Cta from "../components/Cta";
 import { Link } from "gatsby";
+import {getHyGraphContent} from "../utils/utils";
 
 const IndexPage = () => {
   const [homePage, setHomePage] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-      const options = {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({
-          query: `
-          query AboutPageContent {
-              aboutPage(where: {id: "cld0zjj8xdb1b0alqwa834f7r"}) {
+      const query = `
+      query HomePageContent {
+          homePage(where: {id: "clcz72fibhkkd09ljs74vlkfk"}) {
+            title
+            stage
+            callsToAction {
+              ... on Cta {
                 id
-                hero {
-                  header
-                  subHeader
-                }
-                quotes {
-                  ... on Quote {
-                    id
-                    author
-                    body
-                  }
+                header
+                body
+                image {
+                  url
                 }
               }
             }
-          `,
-        })
-      }
-    fetch("https://api-us-west-2.hygraph.com/v2/clcz5rk8l3uih01t840ju7w9o/master", options)
-        .then(res => res.json())
-        .then(data => {
-          console.log(data)
-          setHomePage(data.data.homePage);
-          setLoading(false);
-        })
-        .catch(err => console.error(err))
+            hero {
+              stage
+              subHeader
+              header
+              image {
+                url
+              }
+            }
+         }
+      }`
+     getHyGraphContent(query).then((content) => {
+         console.log(content)
+         setHomePage(content.data.homePage);
+         setLoading(false);
+     });
   }, []);
+    if (!loading) {
     return (
+    <div className="wrapper">
       <CoreLayout>
-        <Hero title={homePage.hero.header} />
+        <Hero title={homePage.hero.header} image={homePage.hero.image.url} cta={true}/>
         <div className="relative my-12 py-12">
           <div className="absolute inset-0 flex items-center" aria-hidden="true">
             <div className="w-full border-t border-gray-300"></div>
@@ -88,7 +89,8 @@ const IndexPage = () => {
           </div>
         </div>
       </CoreLayout>
-  )
+    </div>
+  )}
 }
 
 export default IndexPage
