@@ -24,7 +24,7 @@ export default function Example() {
             </div>
           ))}
         </nav>
-        <p className="mt-8 text-center text-base text-gray-400">&copy; 2022 Almost Home Wyoming, Inc. All rights reserved.</p>
+        <p className="mt-8 text-center text-base text-gray-400">&copy; 2023 Almost Home Wyoming, Inc. All rights reserved.</p>
       </div>
     </footer>
   )

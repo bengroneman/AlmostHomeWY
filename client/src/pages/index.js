@@ -14,18 +14,23 @@ const IndexPage = () => {
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify({
           query: `
-                query HomePageContent{
-                homePage(where: {id: "clcz72fibhkkd09ljs74vlkfk"}) {
-                  title
-                  stage
-                  hero {
-                    stage
-                    subHeader
-                    header
+          query AboutPageContent {
+              aboutPage(where: {id: "cld0zjj8xdb1b0alqwa834f7r"}) {
+                id
+                hero {
+                  header
+                  subHeader
+                }
+                quotes {
+                  ... on Quote {
+                    id
+                    author
+                    body
                   }
                 }
               }
-            `,
+            }
+          `,
         })
       }
     fetch("https://api-us-west-2.hygraph.com/v2/clcz5rk8l3uih01t840ju7w9o/master", options)
@@ -37,18 +42,15 @@ const IndexPage = () => {
         })
         .catch(err => console.error(err))
   }, []);
-
-  if (!loading) {return (
+    return (
       <CoreLayout>
-        <Hero title={homePage.hero.header}>
-          {homePage.hero.subHeader}
-        </Hero>
+        <Hero title={homePage.hero.header} />
         <div className="relative my-12 py-12">
           <div className="absolute inset-0 flex items-center" aria-hidden="true">
             <div className="w-full border-t border-gray-300"></div>
           </div>
           <div className="relative flex justify-center">
-            <span className="px-3 text-2xl font-medium text-gray-900"> Homeless to hopeful, with just a little help </span>
+              <span className="px-3 text-2xl font-medium text-gray-900"> {homePage.hero.subHeader}</span>
           </div>
         </div>
 
@@ -57,9 +59,9 @@ const IndexPage = () => {
             <h2 className="sr-only">About. </h2>
             <dl className="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-8">
 
-              {/*{homePage.data.attributes.CTA.map((item, index) => (*/}
-              {/*    <Cta key={index} header={item.Header} body={item.Body} />*/}
-              {/*))}*/}
+              {homePage.callsToAction.map((item, index) => (
+                  <Cta key={index} header={item.header} body={item.body} image_url={item.image.url}/>
+              ))}
             </dl>
           </div>
         </div>
@@ -86,7 +88,7 @@ const IndexPage = () => {
           </div>
         </div>
       </CoreLayout>
-  )} else {return <div>Loading...</div>}
+  )
 }
 
 export default IndexPage

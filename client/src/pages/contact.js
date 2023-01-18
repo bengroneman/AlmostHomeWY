@@ -4,25 +4,34 @@ import CoreLayout from "../components/layouts/CoreLayout";
 import Hero from "../components/Hero";
 import ContactForm from "../components/forms/ContactForm";
 import aboutImage from "../images/Almost-Home-2.jpeg";
+import {getHyGraphContent} from "../utils/utils";
 
 const Contact = () => {
   const [contactPage, setContactPage] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    fetch("http://localhost:1337/api/contact?populate=*")
-        .then(res => res.json())
-        .then(data => {
-          setContactPage(data);
+        const query = `
+          query ContactPage {
+              contactPage(where: {id: "cld10o0q7dm3x0alqjr93kumh"}) {
+                id
+                hero {
+                  subHeader
+                  header
+                }
+              }
+            }
+        `;
+      getHyGraphContent(query).then((content) => {
+          setContactPage(content.data.contactPage);
           setLoading(false);
-        })
-        .catch(err => console.error(err))
+      });
   }, []);
   if (!loading) {return (
     <CoreLayout>
-       <Hero title={contactPage.data.attributes.Hero.Header}>
+       <Hero title={contactPage.hero.header}>
          <p className="mt-6 max-w-3xl mx-auto text-xl leading-normal text-gray-500 text-center">
-           {contactPage.data.attributes.Hero.Subheader}
+           {contactPage.hero.subHeader}
          </p>
        </Hero>
       {/* Contact Section */}

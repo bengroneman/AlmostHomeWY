@@ -1,21 +1,37 @@
-import * as React from 'react';
+import React from 'react';
 import CoreLayout from "../components/layouts/CoreLayout"
 import Hero from '../components/Hero'
 import heroImage from "../images/Almost-Home-1.jpeg";
+import Quote from "../components/Quote";
+import { getHyGraphContent } from "../utils/utils";
 
-const About = () => {
+export default function About() {
     const [aboutContent, setAboutContent] = React.useState(null);
     let [loading, setLoading] = React.useState(true)
-
     React.useEffect(() => {
-        fetch('http://localhost:1337/api/about')
-            .then(res => res.json())
-            .then(data => {
-                setAboutContent(data);
-                setLoading(false);
-            })
-            .catch(err => console.log(err));
-    }, []);
+          const query = `
+          query AboutPage {
+          aboutPage(where: {id: "cld0zjj8xdb1b0alqwa834f7r"}) {
+            id
+            hero {
+              header
+              subHeader
+            }
+            quotes {
+              ... on Quote {
+                id
+                author
+                body
+              }
+            }
+          }
+        }
+        `
+      getHyGraphContent(query).then((content) => {
+          setAboutContent(content.data.aboutPage);
+          setLoading(false);
+      });
+  }, []);
 
     return (
         <div className="w-full">
@@ -23,8 +39,8 @@ const About = () => {
                 ? <div>Loading...</div>
                 :
                 <CoreLayout>
-                    <Hero title={aboutContent.data.attributes.Header}>
-                        {aboutContent.data.attributes.Subheader}
+                    <Hero title={aboutContent.hero.header}>
+                        {aboutContent.hero.subHeader}
                     </Hero>
                     <div className="relative bg-white mt-12">
                         <div className="lg:absolute lg:inset-0">
@@ -46,7 +62,9 @@ const About = () => {
                                         Our Mission
                                     </h3>
                                     <div className="mt-5 prose prose-indigo text-gray-500">
-                                        {aboutContent.data.attributes.Content}
+                                        {aboutContent.quotes.map((index, item) => {
+                                            return <Quote author={item.author} key={index}>{item.body}</Quote>
+                                        })}
                                     </div>
                                 </div>
                             </div>
@@ -57,5 +75,3 @@ const About = () => {
         </div>
     )
 }
-
-export default About
