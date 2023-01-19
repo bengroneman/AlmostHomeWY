@@ -1,4 +1,5 @@
 import React from "react";
+import PrimaryBtn from "./global/PrimaryBtn";
 
 const Hero = class extends React.Component {
     constructor(props) {
@@ -32,7 +33,7 @@ const Hero = class extends React.Component {
               <div className="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
                 <div className="space-y-4 sm:mx-auto">
                   {this.props.cta &&
-                    <a href="/about" className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-indigo-700 shadow-sm hover:bg-indigo-50 sm:px-8">Learn More</a>
+                      <PrimaryBtn link={"/about"}>Learn More</PrimaryBtn>
                   }
                 </div>
               </div>

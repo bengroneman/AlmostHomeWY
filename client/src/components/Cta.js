@@ -1,12 +1,15 @@
 import React from 'react'
+import PrimaryBtn  from '../components/global/PrimaryBtn'
+import SecondaryBtn from "./global/SecondaryBtn";
 
 const Cta = class extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
+        this.props = {
             header: "",
             body: "",
             image_url: "",
+            ctaLink: ""
         }
     }
     render() {
@@ -23,6 +26,7 @@ const Cta = class extends React.Component {
                 <dd className="mt-2 text-base text-gray-500">
                     <p className="text-sm leading-5 text-gray-900">{this.props.body}</p>
                 </dd>
+                <SecondaryBtn>Learn More</SecondaryBtn>
             </div>
         )
     }

@@ -56,14 +56,22 @@ export default function About() {
                             className="relative pt-12 pb-16 px-4 sm:pt-16 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto lg:grid lg:grid-cols-2">
                             <div className="lg:col-start-2 lg:pl-8">
                                 <div className="text-base max-w-prose mx-auto lg:max-w-lg lg:ml-auto lg:mr-0">
-                                    <h2 className="leading-6 text-indigo-600 font-semibold tracking-wide uppercase">People
-                                        helping people</h2>
+                                    <h2 className="leading-6 text-indigo-600 font-semibold tracking-wide uppercase">
+                                        People helping people
+                                    </h2>
                                     <h3 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
                                         Our Mission
                                     </h3>
-                                    <div className="mt-5 prose prose-indigo text-gray-500">
-                                        {aboutContent.quotes.map((index, item) => {
-                                            return <Quote author={item.author} key={index}>{item.body}</Quote>
+                                    <div className="mt-5 prose prose-indigo text-gray-900">
+                                        {aboutContent.quotes.map(item => {
+                                            return (
+                                                <blockquote key={item.author}>
+                                                    {item.body}
+                                                    <p>
+                                                     <em>- {item.author}</em>
+                                                    </p>
+                                                </blockquote>
+                                            )
                                         })}
                                     </div>
                                 </div>

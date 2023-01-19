@@ -20,6 +20,7 @@ const IndexPage = () => {
                 id
                 header
                 body
+                link
                 image {
                   url
                 }
@@ -51,17 +52,16 @@ const IndexPage = () => {
             <div className="w-full border-t border-gray-300"></div>
           </div>
           <div className="relative flex justify-center">
-              <span className="px-3 text-2xl font-medium text-gray-900"> {homePage.hero.subHeader}</span>
+              <h2 className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl"> {homePage.hero.subHeader}</h2>
           </div>
         </div>
 
         <div className="py-12 my-12 bg-white">
           <div className="max-w-xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-            <h2 className="sr-only">About. </h2>
+            <h2 className="sr-only">About </h2>
             <dl className="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-8">
-
               {homePage.callsToAction.map((item, index) => (
-                  <Cta key={index} header={item.header} body={item.body} image_url={item.image.url}/>
+                  <Cta key={index} header={item.header} body={item.body} image_url={item.image.url} ctaLink={item.link}/>
               ))}
             </dl>
           </div>
