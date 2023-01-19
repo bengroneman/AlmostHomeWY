@@ -3,6 +3,7 @@ import CoreLayout from "../components/layouts/CoreLayout";
 import Hero from "../components/Hero";
 import {getHyGraphContent} from "../utils/utils";
 import SecondaryBtn from "../components/global/SecondaryBtn";
+import {formatTime} from "../utils/utils";
 
 export default function Stories() {
     const [stories, setStories] = React.useState(null);
@@ -35,6 +36,7 @@ export default function Stories() {
       setStories(content.data.stories);
       setLoading(false);
     });
+
   }, []);
     if (!loading) {
 
@@ -59,7 +61,7 @@ export default function Stories() {
                                 </div>
                                 <div className="mt-6 flex items-center">
                                         <div className="flex space-x-1 text-sm text-gray-500">
-                                            <time dateTime={story.updatedAt}>{story.updatedAt}</time>
+                                            <time dateTime={story.updatedAt}>{formatTime(story.updatedAt)}</time>
                                             <span aria-hidden="true">&middot;</span>
                                         </div>
                                 </div>
