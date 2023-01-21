@@ -4,6 +4,7 @@ import Hero from "../components/Hero";
 import {getHyGraphContent} from "../utils/utils";
 import SecondaryBtn from "../components/global/SecondaryBtn";
 import {formatTime} from "../utils/utils";
+import image from "../images/Almost-Home-1.jpeg";
 
 export default function Stories() {
     const [stories, setStories] = React.useState(null);
@@ -32,7 +33,6 @@ export default function Stories() {
         }
     `
     getHyGraphContent(query).then((content) => {
-        console.log(content)
       setStories(content.data.stories);
       setLoading(false);
     });
@@ -46,7 +46,8 @@ export default function Stories() {
             <div className="absolute inset-0">
                 <div className="bg-white h-1/3 sm:h-2/3" />
             </div>
-            <div className="relative max-w-7xl mx-auto"> <Hero title="Our stories"></Hero>
+            <div className="relative max-w-7xl mx-auto">
+                <Hero title="Our stories" image={image}></Hero>
                 <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
                     {stories.map((story) => (
                         <div key={story.title} className="flex flex-col rounded-lg shadow-lg overflow-hidden">

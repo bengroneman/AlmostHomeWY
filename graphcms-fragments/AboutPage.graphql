@@ -1,0 +1,76 @@
+fragment AboutPage on AboutPage {
+  stage
+  publishedAt
+  updatedAt
+  createdAt
+  remoteId: id
+  hero {
+    ... on Hero {
+      stage
+      id
+      header
+      subHeader
+      image {
+        ... on Asset {
+          remoteTypeName: __typename
+          remoteId: id
+          locale
+          stage
+        }
+      }
+    }
+  }
+  callToAction {
+    ... on Cta {
+      stage
+      id
+      header
+      body
+      link
+      image {
+        ... on Asset {
+          remoteTypeName: __typename
+          remoteId: id
+          locale
+          stage
+        }
+      }
+    }
+  }
+  quotes {
+    ... on Quote {
+      stage
+      id
+      body
+      author
+    }
+  }
+  publishedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  updatedBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  createdBy {
+    ... on User {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  scheduledIn {
+    ... on ScheduledOperation {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+}

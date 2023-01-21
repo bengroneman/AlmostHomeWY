@@ -17,6 +17,12 @@ module.exports = {
           "path": "./src/images/"
         },
         __key: "images"
-      }
+      },
+      {
+        resolve: 'gatsby-source-graphcms',
+        options: {
+          endpoint: "https://api-us-west-2.hygraph.com/v2/clcz5rk8l3uih01t840ju7w9o/master",
+        },
+      },
   ]
 };
