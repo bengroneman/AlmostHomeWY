@@ -1,5 +1,4 @@
 import React from 'react'
-import PrimaryBtn  from '../components/global/PrimaryBtn'
 import SecondaryBtn from "./global/SecondaryBtn";
 
 const Cta = class extends React.Component {
@@ -17,7 +16,7 @@ const Cta = class extends React.Component {
             <div>
                 <dt>
                     <div className="flex items-center justify-center h-12 w-12 rounded-md bg-sky-500 text-white">
-                        {this.props.image_url !== "" &&
+                        {this.props.image_url &&
                             <img src={this.props.image_url} alt={"Associated CTA Image"}/>
                         }
                     </div>
