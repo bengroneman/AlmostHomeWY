@@ -4,6 +4,9 @@
   "private": true,
   "description": "almost-home-wyoming",
   "author": "bengroneman",
+  "engines": {
+    "node": ">=18.13.0"
+  },
   "keywords": [
     "gatsby"
   ],

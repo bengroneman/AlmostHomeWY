@@ -1,7 +1,7 @@
 import React from "react"
 import CoreLayout from "../components/layouts/CoreLayout"
 
-export default ({pageContext: {story } }) => (
+const Story = ({pageContext: {story } }) => (
   <CoreLayout>
     <div>
       <h1>{story.title}</h1>
@@ -9,3 +9,5 @@ export default ({pageContext: {story } }) => (
     </div>
   </CoreLayout>
 )
+
+export default Story;
