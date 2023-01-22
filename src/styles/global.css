@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 @layer components {
-    .active-link {
-       @apply block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50;
-    }
-    .link {
-        @apply font-semibold text-cyan-200 hover:text-sky-100;
-    }
-    .btn-primary {
-        @apply relative inline-flex items-center px-4 py-2 rounded border border-gray-300 bg-violet-100 text-sm font-medium text-violet-700 hover:bg-violet-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-violet-500 focus:border-violet-500;
-    }
+  .active-link {
+    @apply block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50;
+  }
+  .link {
+    @apply font-semibold text-cyan-200 hover:text-sky-100;
+  }
+  .btn-primary {
+    @apply relative inline-flex items-center px-4 py-2 rounded border border-gray-300 bg-violet-100 text-sm font-medium text-violet-700 hover:bg-violet-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-violet-500 focus:border-violet-500;
+  }
 }
