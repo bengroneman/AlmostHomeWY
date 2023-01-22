@@ -8,7 +8,11 @@ exports.createPages = ({ graphql, actions }) => {
   {
     allGraphCmsStory {
       nodes {
+        title
         slug
+        body {
+          html
+        }
       }
     }
   }
@@ -21,16 +25,7 @@ exports.createPages = ({ graphql, actions }) => {
       createPage({
         path: `stories/${story.slug}`,
         component: blogPostTemplate,
-        context: {
-          // Add optional context data to be inserted
-          // as props into the page component.
-          //
-          // The context data can also be used as
-          // arguments to the page GraphQL query.
-          //
-          // The page "path" is always available as a GraphQL
-          // argument.
-        },
+        context: { story },
       })
     })
   })
