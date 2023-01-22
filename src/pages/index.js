@@ -46,7 +46,7 @@ const IndexPage = () => {
     return (
     <div className="wrapper">
       <CoreLayout>
-        <Hero title={homePage.hero.header} image={homePage.hero.image.url} cta={true}/>
+        <Hero title={homePage.hero.header} image={homePage.hero.image.url} cta={true} subTitle={homePage.hero.subHeader} />
         <div className="relative my-12 py-12">
           <div className="absolute inset-0 flex items-center" aria-hidden="true">
             <div className="w-full border-t border-gray-300"></div>

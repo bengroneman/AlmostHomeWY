@@ -5,7 +5,8 @@ const Hero = class extends React.Component {
     constructor(props) {
         super(props);
         this.props = {
-            title: "",
+            title: "Title",
+            subTitle: "SubTitle",
             image: null,
             cta: false
         };
@@ -29,7 +30,9 @@ const Hero = class extends React.Component {
                     {this.props.children}
                 </span>
               </h1>
-              <p className="mx-auto mt-6 max-w-lg text-center text-xl text-indigo-200 sm:max-w-3xl">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p>
+              <h2 className="text-center text-2xl font-semibold tracking-light text-indigo-200 mt-2">
+                  {this.props.subTitle}
+              </h2>
               <div className="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
                 <div className="space-y-4 sm:mx-auto">
                   {this.props.cta &&
