@@ -6,6 +6,7 @@ const ContactForm = () => {
       action="#"
       method="POST"
       className="mt-9 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
+      netlify
     >
       <div>
         <label
