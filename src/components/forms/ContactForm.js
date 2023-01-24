@@ -3,10 +3,10 @@ import React from "react";
 const ContactForm = () => {
   return (
     <form
-      action="#"
       method="POST"
+      name="ContactForm"
       className="mt-9 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
-      netlify
+      data-netlify="true"
     >
       <div>
         <label
