@@ -7,8 +7,11 @@ const ContactForm = () => {
       name="ContactForm"
       className="mt-9 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
       data-netlify="true"
+      netlify-honeypot="bot-field"
       netlify
+      hidden
     >
+      <input type="hidden" name="form-name" value="ContactForm" />
       <div>
         <label
           htmlFor="first-name"
