@@ -66,6 +66,11 @@ const IndexPage = () => {
   if (!loading) {
     return (
       <div className="wrapper">
+        <form name="ContactForm" netlify netlify-honeypot="bot-field" hidden>
+          <input type="text" name="name" />
+          <input type="email" name="email" />
+          <textarea name="message"></textarea>
+        </form>
         <CoreLayout>
           <Hero
             title={homePage.hero.header}
