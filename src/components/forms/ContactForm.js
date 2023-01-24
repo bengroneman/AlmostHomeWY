@@ -7,6 +7,7 @@ const ContactForm = () => {
       name="ContactForm"
       className="mt-9 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
       data-netlify="true"
+      netlify
     >
       <div>
         <label
