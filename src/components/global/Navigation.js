@@ -54,8 +54,8 @@ const Navigation = class extends React.Component {
 
   render() {
     return (
-      <div className="bg-slate-900 shadow-md">
-        <div className="max-w-7xl mx-auto p-4 sm:px-6">
+      <div className="bg-t-teal shadow-md">
+        <div className="max-w-7xl mx-auto p-6 sm:px-6">
           <nav
             className="relative flex items-center justify-between sm:h-10 md:justify-center"
             aria-label="Global"

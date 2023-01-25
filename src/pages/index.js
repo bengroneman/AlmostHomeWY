@@ -74,12 +74,6 @@ const IndexPage = () => {
             image={homePage.hero.image.url}
           />
           <div className="relative my-12 py-12">
-            <div
-              className="absolute inset-0 flex items-center"
-              aria-hidden="true"
-            >
-              <div className="w-full border-t border-gray-300"></div>
-            </div>
             <div className="relative flex justify-center">
               <h2 className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl">
                 the Almost Home Organization

@@ -11,8 +11,8 @@ export default function CoreLayout({ children }) {
         <textarea name="message"></textarea>
       </form>
       <Navigation />
-      <div className="relative pt-6 pb-16 sm:pb-24">
-        <main className="mt-16 mx-auto max-w-7xl px-4 sm:mt-24">
+      <div className="relative pb-16 sm:pb-24">
+        <main className="mx-auto">
           {children}
         </main>
       </div>
