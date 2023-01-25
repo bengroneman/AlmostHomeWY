@@ -25,8 +25,7 @@ const Contact = () => {
     getHyGraphContent(query).then((content) => {
       setContactPage(content.data.contactPage);
       setLoading(false);
-    });
-  }, []);
+    }); }, []);
   if (!loading) {
     return (
       <CoreLayout>

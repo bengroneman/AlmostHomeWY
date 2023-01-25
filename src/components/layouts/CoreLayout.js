@@ -5,6 +5,11 @@ import Footer from "../global/Footer";
 export default function CoreLayout({ children }) {
   return (
     <div className="relative bg-gray-50 overflow-hidden">
+      <form name="ContactForm" netlify-honeypot="bot-field" hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <textarea name="message"></textarea>
+      </form>
       <Navigation />
       <div className="relative pt-6 pb-16 sm:pb-24">
         <main className="mt-16 mx-auto max-w-7xl px-4 sm:mt-24">

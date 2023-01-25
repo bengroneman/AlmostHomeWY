@@ -66,17 +66,12 @@ const IndexPage = () => {
   if (!loading) {
     return (
       <div className="wrapper">
-        <form name="ContactForm" netlify netlify-honeypot="bot-field" hidden>
-          <input type="text" name="name" />
-          <input type="email" name="email" />
-          <textarea name="message"></textarea>
-        </form>
+
         <CoreLayout>
           <Hero
             title={homePage.hero.header}
-            image={homePage.hero.image.url}
-            cta={true}
             subTitle={homePage.hero.subHeader}
+            image={homePage.hero.image.url}
           />
           <div className="relative my-12 py-12">
             <div
@@ -112,8 +107,8 @@ const IndexPage = () => {
           <div className="relative max-w-7xl mx-auto">
             <Hero title="Our stories" image={image}></Hero>
             <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-              {stories.map((story) => (
-                <StoryCard story={story}></StoryCard>
+              {stories.map((story, index) => (
+                <StoryCard story={story} key={index}></StoryCard>
               ))}
             </div>
           </div>
