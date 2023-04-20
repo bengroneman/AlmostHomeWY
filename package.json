@@ -27,7 +27,7 @@
     "dotenv": "^16.0.1",
     "gatsby": "^5.5.0",
     "gatsby-plugin-image": "^3.4.0",
-    "gatsby-plugin-sharp": "^5.4.0",
+    "gatsby-plugin-sharp": "^5.8.1",
     "gatsby-source-filesystem": "^5.4.0",
     "gatsby-source-graphcms": "^2.8.0",
     "gatsby-transformer-sharp": "^5.4.0",
